@@ -1,4 +1,4 @@
-
+Drop database vehicle;
 CREATE DATABASE vehicle;
 USE vehicle;
 CREATE TABLE login(
@@ -8,7 +8,7 @@ name varchar(30),
 email varchar(100) UNIQUE KEY
 );
 SELECT * FROM login;
-INSERT INTO login VALUES("Amit","1","Amit Natani", "amit.natani@metacube.com");
+INSERT INTO login VALUES("parul","1","Parul Joshi", "parul.joshi@metacube.com");
 
 CREATE TABLE Vehicle (
     id INTEGER UNSIGNED NOT NULL auto_increment PRIMARY KEY,
@@ -20,11 +20,12 @@ CREATE TABLE Vehicle (
     price INT UNSIGNED NOT NULL,
     road_tax INT UNSIGNED NOT NULL,
     created_by VARCHAR(50) NOT NULL,
-    created_time TIMESTAMP NOT NULL,
     last_modified_time TIMESTAMP NOT NULL,
+    created_time TIMESTAMP NOT NULL,
     image_path varchar(200) NOT NULL
 );
 SELECT * FROM vehicle;
+
 
 CREATE TABLE Car(
     id INTEGER UNSIGNED NOT NULL auto_increment PRIMARY KEY,
@@ -33,11 +34,14 @@ CREATE TABLE Car(
     power_steering VARCHAR(30) NOT NULL,
     accessory_kit VARCHAR(30) NOT NULL,
     created_by VARCHAR(50) NOT NULL,
-    created_time TIMESTAMP NOT NULL,
     last_modified_time TIMESTAMP NOT NULL,
+    created_time TIMESTAMP NOT NULL,
     CONSTRAINT `car_vehicle_id`
     FOREIGN KEY(vehicle_id)
     REFERENCES Vehicle(id)
 );
 
 SELECT * FROM car;
+SELECT model, image_path FROM Vehicle LIMIT 1;
+
+SELECT * FROM Vehicle WHERE price BETWEEN 250000 AND 500000; 
